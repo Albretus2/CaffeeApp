@@ -1,0 +1,6 @@
+/* font overall */
+
+@font-face {
+    font-family: "hack";
+    src: url("/font/Hack.ttf") format(truetype);
+}

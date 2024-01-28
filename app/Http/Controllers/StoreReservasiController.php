@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Reservasi;
+use App\Models\Table;
+use Illuminate\Validation\Rules\Unique;
+
+class StoreReservasiController extends Controller
+{
+    public function store(Request $request, Reservasi $reservasi, Table $table)
+    {
+        $validateData = $request->validate([
+            'date' => 'date|required',
+            'time' => 'required',
+            'table' => 'unique:reservasis'
+        ]);
+        $validateData['user_id'] = auth()->user()->id;
+
+        Reservasi::create($validateData);
+
+        return redirect('/dashboard');
+    }
+}
