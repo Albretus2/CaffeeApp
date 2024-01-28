@@ -4,38 +4,16 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            @if (session()->has('create'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('create') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session()->has('delete'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('delete') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            @if (session()->has('update'))
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ session('update') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
             <!-- Main row -->
             <div class="row">
 
                 @if ($menus->count())
                     <!-- Left col -->
                     @foreach ($menus as $menu)
-                        <a class="col-lg-2" href="#" data-bs-toggle="offcanvas" data-bs-target="#{{ $menu->id }}"
-                            aria-controls="offcanvasWithBothOptions">
-                            <div class="card shadow-sm text-light "
-                                style="background-color:rgba(0, 0, 0, .25);height:5rem;overflow: hidden;border: none;">
-                                <div class="card-img-overlay">
+                        <a class="col-lg-2 text-decoration-none" href="#" data-bs-toggle="offcanvas"
+                            data-bs-target="#{{ $menu->id }}" aria-controls="offcanvasWithBothOptions">
+                            <div class="card shadow-sm text-light " style="background-color:rgba(0, 0, 0, .25);border: none;">
+                                <div class="body px-3 pt-3">
                                     <div class="row">
                                         <div class="col-md">
                                             <h6 class="">{{ $menu->name }}</h6>

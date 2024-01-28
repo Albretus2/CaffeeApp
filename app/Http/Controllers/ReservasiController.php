@@ -30,7 +30,7 @@ class ReservasiController extends Controller
 
         Reservasi::where('id', $reservasi->id)->update($validasi);
 
-        return redirect('/dashboard/reservasi')->with('update', 'data berhasil di update');
+        return redirect('/dashboard/reservasi')->with('toast_success', 'status berhasil di update');
     }
 
     /**

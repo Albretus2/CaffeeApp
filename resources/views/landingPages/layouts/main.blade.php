@@ -17,6 +17,7 @@
     <!-- Site Title -->
     <title>Coffee | Allber</title>
 
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 
     <!--
@@ -59,6 +60,8 @@
     @yield('container')
     @include('landingPages.partials.footer')
 
+    {{-- swat allert --}}
+    @include('sweetalert::alert')
 
 
     <script src="{{ asset('style_landingPages/js/vendor/jquery-2.2.4.min.js') }}"></script>

@@ -14,9 +14,12 @@ class StoreReservasiController extends Controller
         $validateData = $request->validate([
             'date' => 'date|required',
             'time' => 'required',
-            'table' => 'unique:reservasis'
         ]);
         $validateData['user_id'] = auth()->user()->id;
+
+        if (request('tabel_id') == $table->id) {
+            return redirect('/home')->with('toast_error', 'meja sudah terisi');
+        }
 
         Reservasi::create($validateData);
 

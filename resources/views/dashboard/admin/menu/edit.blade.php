@@ -24,11 +24,10 @@
                         <div class="mb-3 ">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" autocomplete="off"
-                                class="form-control shadow-none text-light border-white @error('name')
+                                class="form-control shadow-none text-light border-white border-2 bg-dark @error('name')
                                 is-invalid
                             @enderror"
-                                id="name" name="name" placeholder=".........." data-provide="typeahead"
-                                style="background-color: transparent;border-color: #292929;"
+                                id="name" name="name" data-provide="typeahead"
                                 value="{{ old('name', $menu->name) }}" autofocus required>
                             @error('name')
                                 <div class="invalid-feedback">
@@ -39,11 +38,10 @@
                         <div class="mb-3 ">
                             <label for="price" class="form-label">Price</label>
                             <input type="number" autocomplete="off"
-                                class="form-control shadow-none text-light border-white @error('price')
+                                class="form-control shadow-none text-light border-white border-2 bg-dark @error('price')
                                 is-invalid
                             @enderror"
-                                id="price" name="price" placeholder=".........." data-provide="typeahead"
-                                style="background-color: transparent;border-color: #292929;"
+                                id="price" name="price" data-provide="typeahead"
                                 value="{{ old('price', $menu->price) }}" autofocus required>
                             @error('price')
                                 <div class="invalid-feedback">
@@ -54,11 +52,10 @@
                         <div class="mb-3 ">
                             <label for="slug" class="form-labl d-none">Slug</label>
                             <input type="text" autocomplete="off"
-                                class="form-control d-none shadow-none text-light border-white @error('slug')
+                                class="form-control d-none shadow-none text-light border-white border-2 bg-dark @error('slug')
                                 is-invalid
                             @enderror"
-                                id="name" name="slug" placeholder=".........." data-provide="typeahead"
-                                style="background-color: transparent;border-color: #292929;"
+                                id="slug" name="slug" data-provide="typeahead"
                                 value="{{ old('slug', $menu->slug) }}" autofocus required readonly>
                             @error('name')
                                 <div class="invalid-feedback">
@@ -89,4 +86,15 @@
             </form>
         </div>
     </section>
+
+    <script>
+        const name = document.querySelector('#name')
+        const slug = document.querySelector('#slug')
+        // scirpt untuk membuat slug otomatis
+        name.addEventListener('keyup', function() {
+            let preslug = name.value;
+            preslug = preslug.replace(/ /g, "-");
+            slug.value = preslug.toLowerCase();
+        })
+    </script>
 @endsection

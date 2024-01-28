@@ -114,6 +114,18 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <a href="{{ asset('style_landingPages/img/g4.jpg') }}" class="img-pop-home">
+                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g4.jpg') }}" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <a href="{{ asset('style_landingPages/img/g5.jpg') }}" class="img-pop-home">
+                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g5.jpg') }}" alt="">
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     <!-- End gallery Area -->
@@ -252,36 +264,33 @@
             </div>
             <div class="row justify-content-center mb-4 text-light">
                 <div class="col-md-10">
-                    <div class="rounded p-4" style="background-color: #965b2a;">
-                        <p>1. Untuk bisa melakukan Reservasi, harus <a href="/login" class="text-warning">Login</a>
+                    <div class="rounded p-4" style="background-color: #764116;">
+                        <p>1. Untuk bisa melakukan Reservasi, harus <a href="/login"
+                                class="text-decoration-none text-light"><strong>Login</strong></a>
                             terlebih
                             dahulu
                             dan
-                            jika belum memiliki akun maka lakukan <a href="/sign" class="text-warning">Register</a></p>
-                        <p>2. Jika meja yang di inginkan tidak ada dalam list pilihan meja, maka meja
-                            tersebut sudah di reservasi oleh orang lain
+                            jika belum memiliki akun maka lakukan <a href="/sign"
+                                class="text-decoration-none text-light"><strong>Register</strong> </a></p>
+                        <p>2. akan muncul notif ketika meja yang di pilih sudah di resevasi oleh orang lain
                         </p>
                         <p>3. Buka setiap hari mulai dari jam 9:00 - 21:00
-                        </p>
-                        <p class="text-danger">
-                            @error('user_id')
-                                {{ $message }}
-                            @enderror
                         </p>
                     </div>
 
                 </div>
             </div>
-            <form action="/dashboard/reservasi" method="POST" id="formReservasi">
+            <form action="/dashboard/reservasi" method="POST">
                 @csrf
-                <div class="row justify-content-center mb-4">
+                <div class="row
+                justify-content-center mb-4">
                     <div class="col-md-5 mb-3">
                         <label for="date">Date</label>
                         <input type="date"
                             class="cta-res form-control @error('date')
                         is-invalid
                         @enderror"
-                            id="date" name="date">
+                            id="date" name="date" value="{{ old('date') }}">
                         @error('date')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -294,7 +303,7 @@
                             class="cta-res form-control @error('time')
                         is-invalid
                         @enderror"
-                            id="time" name="time" min="90:00" max="21:00">
+                            id="time" name="time" min="90:00" max="21:00" value="{{ old('time') }}">
                         @error('time')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -302,26 +311,22 @@
                         @enderror
                     </div>
                     <div class="col-md-5 mb-3">
-                        @error('table_id')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
                         <select name="table_id"
                             class="cta-res form-select p-2 
                             @error('table_id')
                         is-invalid
                         @enderror">
-                            <option selected>Pilih Meja</option>
+                            <option selected disabled value="0">Pilih Meja</option>
                             @foreach ($table as $item)
-                                <option value="{{ $item->id }}" @if ($item->id == $item->reservasi->table_id) disabled @endif>
+                                <option value="{{ $item->id }}">
                                     {{ $item->name }}</option>
                             @endforeach
                         </select>
+
                     </div>
                     <div class="col-md-5">
                         <button class="btn col text-light" style="background-color: #965b2a;"
-                            @auth @else disabled @endauth type="submit" onclick="data()">Book
+                            @auth @else disabled @endauth>Book
                             a
                             Table</button>
                     </div>
@@ -330,10 +335,4 @@
         </div>
     </section>
     <!-- End blog Area -->
-    <script>
-        function data(e) {
-            e.preventDevault();
-        }
-        data.addEvenListener()
-    </script>
 @endsection

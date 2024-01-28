@@ -47,7 +47,7 @@ class MenuController extends Controller
 
         Menu::create($validateData);
 
-        return redirect('/dashboard/menu')->with('create', 'Menu berhasil di buat ');
+        return redirect('/dashboard/menu')->with('toast_success', 'Menu berhasil di buat ');
     }
 
     /**
@@ -81,7 +81,7 @@ class MenuController extends Controller
 
         Menu::where('id', $menu->id)->update($validasi);
 
-        return redirect('/dashboard/menu')->with('update', 'menu berhasil di update');
+        return redirect('/dashboard/menu')->with('toast_info', 'menu berhasil di update');
     }
 
     /**
@@ -90,6 +90,6 @@ class MenuController extends Controller
     public function destroy(Menu $menu)
     {
         Menu::destroy('id', $menu->id);
-        return redirect('/dashboard/menu')->with('delete', 'menu berhasil di hapus');
+        return redirect('/dashboard/menu')->with('toast_error', 'menu berhasil di hapus');
     }
 }
