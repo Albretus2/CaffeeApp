@@ -6,7 +6,6 @@
         <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
-
                 @if ($menus->count())
                     <!-- Left col -->
                     @foreach ($menus as $menu)
@@ -23,39 +22,45 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="offcanvas offcanvas-start bg-dark text-light" data-bs-scroll="true" tabindex="-1"
+
+
+                        <div class="offcanvas offcanvas-end bg-dark text-light" data-bs-scroll="true" tabindex="-1"
                             id="{{ $menu->id }}" aria-labelledby="offcanvasWithBothOptionsLabel">
                             <div class="offcanvas-header">
                                 <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">{{ $menu->name }}</h5>
                                 <p type="button" class="" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                                        class="fa-solid fa-xmark text-danger  fs-4 mt-3"></i></p>
+                                        class="fa-solid fa-xmark  fs-4 mt-3" style="color: #FC6736 "></i></p>
                             </div>
-                            <div class="offcanvas-body">
-                                <p style="font-size: 0.8rem" class="mb-4">{{ $menu->deskripsi }}</p>
-                                <div class="row p-0 ">
-                                    <div class="col-1 me-2"> <a href="/dashboard/menu/{{ $menu->slug }}/edit"
-                                            class="text-light rounded-1"><i class="fa-solid fa-pen-to-square fs-5"></i></a>
+                            <div class="offcanvas-body d-flex flex-column gap-4">
+                                @if ($menu->image)
+                                    <div class="menuImg rounded-4"
+                                        style="background-image: url({{ asset('storage/' . $menu->image) }});height:10rem">
                                     </div>
-                                    <div class="col-1">
-                                        <form action="/dashboard/menu/{{ $menu->slug }}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button class="p-0 bg-transparent border-0 text-danger"><i
-                                                    class="fa-solid fa-trash-can me-3 fs-5"></i></button>
-                                        </form>
+                                @endif
+                                <p style="" class="mb-4">{{ $menu->deskripsi }}</p>
+                                <form action="/dashboard/menu/{{ $menu->slug }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <div class="option d-flex gap-3">
+                                        <a href="/dashboard/menu/{{ $menu->slug }}/edit" class="text-light"><i
+                                                class="fa-solid fa-square-pen fs-3"></i></a>
+                                        <button class="p-0 bg-transparent border-0 ">
+                                            <i class="fa-solid fa-square-minus me-3 fs-3"
+                                                style="color: #FC6736 "></i></button>
                                     </div>
-                                </div>
-
-
+                                </form>
                             </div>
                         </div>
                     @endforeach
                     <!-- right col -->
                 @else
-                    <div class="row justify-content-center text-center">
-                        <img src="{{ asset('assets/img/morning.png') }}" alt="" style="height: 250px;width:250px"
+                    <div class="row justify-content-center align-items-center flex-column">
+                        <img src="{{ asset('assets/img/notFound.png') }}" alt="" style="height: 250px;width:250px"
                             class="mb-4 mt-5">
-                        <p>OHH NOO, menu tidak ditemukan</p>
+
+                        <div class="text-center ">
+                            <p>OHH NOO, menu not found</p>
+                        </div>
                     </div>
                 @endif
             </div>

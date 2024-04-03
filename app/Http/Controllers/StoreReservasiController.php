@@ -11,15 +11,21 @@ class StoreReservasiController extends Controller
 {
     public function store(Request $request, Reservasi $reservasi, Table $table)
     {
-        $validateData = $request->validate([
+
+        $rules = [
             'date' => 'date|required',
             'time' => 'required',
-        ]);
+        ];
+        if ($request->table_id == $table->where('id', $table->id)) {
+            return redirect('/home')->with('toast_error', 'meja sudah terisi');
+        } else {
+            $rules['table_id'] = 'required';
+        }
+        $validateData = $request->validate($rules);
+
         $validateData['user_id'] = auth()->user()->id;
 
-        if (request('tabel_id') == $table->id) {
-            return redirect('/home')->with('toast_error', 'meja sudah terisi');
-        }
+
 
         Reservasi::create($validateData);
 

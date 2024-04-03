@@ -17,12 +17,14 @@
                                         <div class="d-flex justify-content-around pt-2"
                                             style="border-top: 0.2rem white dashed">
                                             <a data-bs-toggle="modal" data-bs-target="#{{ $r->id }}"
-                                                class="text-secondary fs-5"><i class="fa-solid fa-file-pen"></i></a>
+                                                class="text-light fs-5" style="cursor: pointer;"><i
+                                                    class="fa-solid fa-file-pen"></i></a>
                                             <form action="{{ route('reservasi.destroy', $r->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="text-danger fs-5 bg-transparent shadow-none border-0 p-0"
-                                                    type="submit"><i class="fa-solid fa-trash-can"></i></button>
+                                                <button class=" fs-5 bg-transparent shadow-none border-0 p-0"
+                                                    type="submit"><i class="fa-solid fa-trash-can "
+                                                        style="color: #FC6736 "></i></button>
                                             </form>
                                         </div>
                                     </div>

@@ -20,6 +20,9 @@
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('assets') }}/plugins/fontawesome-free/css/all.min.css">
+
     <!--
         CSS
         ============================================= -->
@@ -34,8 +37,11 @@
 
 
     <style>
-        /* styling untuk bagian tombol reservasi */
+        html {
+            scroll-behavior: smooth
+        }
 
+        /* styling untuk bagian tombol reservasi */
         .cta-res {
             background: transparent !important;
             border: rgb(166, 129, 65) solid 2px;
@@ -46,22 +52,36 @@
             height: 20rem;
         }
 
-        html {
-            scroll-behavior: smooth
+        /* end */
+
+        .image {
+            border-radius: 2rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .galeryImg {
+            background-size: cover;
+            background-position: center;
+            border-radius: 1rem
         }
     </style>
 </head>
 
 <body>
-
     @if (Request::is('home'))
         @include('landingPages.partials.header')
     @endif
     @yield('container')
+
     @include('landingPages.partials.footer')
+
 
     {{-- swat allert --}}
     @include('sweetalert::alert')
+
+    {{-- icon font awesome --}}
+    <script src="https://kit.fontawesome.com/42c9acb339.js" crossorigin="anonymous"></script>
 
 
     <script src="{{ asset('style_landingPages/js/vendor/jquery-2.2.4.min.js') }}"></script>

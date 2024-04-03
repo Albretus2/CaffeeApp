@@ -49,6 +49,21 @@
                                 </div>
                             @enderror
                         </div>
+
+                        <div class="mb-3 ">
+                            <label for="price" class="form-label">Upload Image </label>
+                            <input type="file" autocomplete="off"
+                                class="form-control shadow-none text-secondary border-secondary bg-dark border-2 @error('image')
+                                    is-invalid
+                                @enderror"
+                                id="image" name="image" value="{{ old('image', $menu->image) }}" autofocus>
+                            @error('image')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="mb-3 ">
                             <label for="slug" class="form-labl d-none">Slug</label>
                             <input type="text" autocomplete="off"

@@ -25,8 +25,8 @@
             <div class="row justify-content-start align-items-center">
                 <div class="col-lg-6 video-right justify-content-center align-items-center d-flex">
                     <div class="overlay overlay-bg"></div>
-                    <a class="play-btn" href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img class="img-fluid"
-                            src="img/play-icon.png" alt=""></a>
+                    <a class="play-btn text-light" style="font-size: 3rem"
+                        href="https://www.youtube.com/watch?v=QOUcIsvymOY"><i class="fa-solid fa-play "></i></a>
                 </div>
                 <div class="col-lg-6 video-left">
                     <h6>Live Coffee making process.</h6>
@@ -87,45 +87,54 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <a href="{{ asset('style_landingPages/img/g1.jpg') }}" class="img-pop-home">
-                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g1.jpg') }}" alt="">
-                    </a>
-                    <a href="{{ asset('style_landingPages/img/g2.jpg') }}" class="img-pop-home">
-                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g2.jpg') }}" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-8">
-                    <a href="{{ asset('style_landingPages/img/g3.jpg') }}" class="img-pop-home">
-                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g3.jpg') }}" alt="">
-                    </a>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <a href="{{ asset('style_landingPages/img/g4.jpg') }}" class="img-pop-home">
-                                <img class="img-fluid" src="{{ asset('style_landingPages/img/g4.jpg') }}" alt="">
-                            </a>
-                        </div>
-                        <div class="col-lg-6">
-                            <a href="{{ asset('style_landingPages/img/g5.jpg') }}" class="img-pop-home">
-                                <img class="img-fluid" src="{{ asset('style_landingPages/img/g5.jpg') }}" alt="">
-                            </a>
-                        </div>
+            @if ($gallery->count())
+                <div class="row">
+                    <div class="col-lg-4">
+                        <a href="{{ asset('storage/' . $gallery[0]->image) }}" class="img-pop-home">
+                            <div class="image mb-4"
+                                style="height: 25rem;background-image: url({{ asset('storage/' . $gallery[0]->image) }})">
+                            </div>
+                        </a>
+                        <a href="{{ asset('storage/' . $gallery[1]->image) }}" class="img-pop-home">
+                            <div class="image mb-4"
+                                style="height: 25rem;background-image: url({{ asset('storage/' . $gallery[1]->image) }})">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-8">
+                        <a href="{{ asset('storage/' . $gallery[2]->image) }}" class="img-pop-home">
+                            <div class="image"
+                                style="height: 51rem;background-image: url({{ asset('storage/' . $gallery[2]->image) }})">
+                            </div>
+                        </a>
+
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4">
-                    <a href="{{ asset('style_landingPages/img/g4.jpg') }}" class="img-pop-home">
-                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g4.jpg') }}" alt="">
-                    </a>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="{{ asset('storage/' . $gallery[3]->image) }}" class="img-pop-home">
+                            <div class="image"
+                                style="height: 25rem;background-image: url({{ asset('storage/' . $gallery[3]->image) }})">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{{ asset('storage/' . $gallery[4]->image) }}" class="img-pop-home">
+                            <div class="image"
+                                style="height: 25rem;background-image: url({{ asset('storage/' . $gallery[4]->image) }})">
+                            </div>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <a href="{{ asset('style_landingPages/img/g5.jpg') }}" class="img-pop-home">
-                        <img class="img-fluid" src="{{ asset('style_landingPages/img/g5.jpg') }}" alt="">
-                    </a>
-                </div>
+            @endif
+            <div class="row justify-content-end px-3" style="margin-top: 2rem">
+                <h2 class="text-end ">
+                    <a href="/gallery" class="text-decoration-none text-dark "><i
+                            class="fa-solid fa-arrow-right-long"></i></a>
+                </h2>
+
             </div>
+
         </div>
     </section>
     <!-- End gallery Area -->
@@ -213,40 +222,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 single-blog">
-                    <img class="img-fluid" src="{{ asset('style_landingPages/img/b1.jpg') }}" alt="">
-                    <ul class="post-tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life Style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest Fashion for young women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore.
-                    </p>
-                    <p class="post-date">
-                        31st January, 2018
-                    </p>
-                </div>
-                <div class="col-lg-6 col-md-6 single-blog">
-                    <img class="img-fluid" src="{{ asset('style_landingPages/img/b2.jpg') }}" alt="">
-                    <ul class="post-tags">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Life Style</a></li>
-                    </ul>
-                    <a href="#">
-                        <h4>Portable latest Fashion for young women</h4>
-                    </a>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore.
-                    </p>
-                    <p class="post-date">
-                        31st January, 2018
-                    </p>
-                </div>
+                @foreach ($news as $item)
+                    <div class="col-lg-6 col-md-6 single-blog">
+                        <div class="galeryImg"
+                            style="background-image: url({{ asset('storage/' . $item->image) }});height:20rem">
+                        </div>
+                        <ul class="post-tags">
+                            <li><a href="#">Travel</a></li>
+                            <li><a href="#">Life Style</a></li>
+                        </ul>
+                        <a href="/post/{{ $item->id }}">
+                            <h4>{{ $item->title }}</h4>
+                        </a>
+                        <p>
+                            {{ $item->excerpt }}
+                        </p>
+                        <p class="post-date">
+                            {{ $item->updated_at->format('F d, Y') }}
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+            <div class="row justify-content-end ">
+                <h2 class="mt-5">
+                    <a href="/news" class="text-dark"><i class="fa-solid fa-arrow-right-long "></i></a>
+                </h2>
             </div>
         </div>
     </section>

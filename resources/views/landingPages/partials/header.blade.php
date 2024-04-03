@@ -11,15 +11,14 @@
     <div class="container">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a href="index.html"><img src="{{ asset('style_landingPages/img/logo.png') }}" alt=""
+                <a href="/"><img src="{{ asset('style_landingPages/img/logo.png') }}" alt=""
                         title="" /></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#coffee">Coffee</a></li>
-                    <li><a href="#review">Review</a></li>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
                     <li><a href="#blog">Blog</a></li>
                     @auth
                         <li><a href="/dashboard">Dashboard</a></li>

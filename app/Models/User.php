@@ -46,6 +46,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // relasi antar table
     public function menus()
     {
         return $this->hasMany(Menu::class);
@@ -58,4 +59,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Gallery::class);
     }
+    public function todo()
+    {
+        return $this->hasMany(Todo::class);
+    }
+    public function news()
+    {
+        return $this->hasMany(News::class);
+    }
+    // end..
 }

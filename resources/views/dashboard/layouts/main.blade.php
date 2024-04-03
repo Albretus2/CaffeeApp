@@ -22,62 +22,30 @@
     <link rel="stylesheet" href="{{ asset('style_dashboard/font-style/font.css') }}">
     {{-- link for Gallery --}}
     <link rel="stylesheet" href="{{ asset('css/gallery/style.css') }}">
-    {{-- trix link
+    {{-- trix link --}}
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script> --}}
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
     <style>
-        /* media query responsife gambar pada halaman index dashboard bagian quotes */
-        @media(max-width:768px) {
-            .gmbr {
-                display: none;
-            }
-        }
-
         *,
         body {
             font-family: 'hack';
         }
 
+        /* style dashboard  */
+        .cardImg {
+            background-position: center;
+            background-size: cover;
+        }
+
+        /* end */
 
         .side-text {
             font-family: 'hack';
-        }
-
-        .entire {
-            font-family: 'hevil';
-            font-size: 11rem;
-            line-height: 7rem;
-        }
-
-        .carddo {
-            /* background-image: url('{{ asset('asset/item.jpg') }}') !important; */
-            height: 22.8rem !important;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-
-        }
-
-        @media screen and (max-width:991px) {
-            .carddo {
-                height: 14rem !important;
-            }
-        }
-
-        .line-deco {
-            height: 4px !important;
-        }
-
-
-        .subject {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
         }
 
         .bg-black {
@@ -87,6 +55,57 @@
         .search::-webkit-input-placeholder {
             color: rgb(124, 124, 124);
         }
+
+        /* style untuk bagian dashboard kelola gallery */
+        .card-gambar {
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 30rem;
+            border: none
+        }
+
+        .card-gambar .menuBar {
+            margin-top: auto;
+
+        }
+
+        /* end style dashboard gallery/ */
+
+        /* style untuk halaman dashboard menu */
+        .menuImg {
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        /* end// */
+
+        /* style dashboard user  */
+        table th,
+        td {
+            padding: 1rem
+        }
+
+        table td {
+            color: rgb(213, 205, 205)
+        }
+
+        /* end dashboar user */
+
+        /* style dashboard news */
+        @media screen and (max-width:1170px) {
+            .newsImg {
+                display: none;
+            }
+        }
+
+        .newsShowImg {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* end /// */
     </style>
 </head>
 
@@ -104,9 +123,12 @@
         @include('dashboard.partials.nav')
         {{-- end navbar --}}
 
-        {{-- sidebar --}}
-        @include('dashboard.partials.sidebar')
-        {{-- end sidebar --}}
+        @if (request()->is('dashboard/*/*'))
+        @else
+            {{-- sidebar --}}
+            @include('dashboard.partials.sidebar')
+            {{-- end sidebar --}}
+        @endif
 
 
         <div class="content-wrapper bg-konten bg-dark">
@@ -125,6 +147,10 @@
     {{-- swat allert --}}
     @include('sweetalert::alert')
 
+    {{-- CKEditor --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+    @yield('script')
+
 
     <!-- jQuery -->
     <script src="{{ asset('assets') }}/plugins/jquery/jquery.min.js"></script>
@@ -134,7 +160,7 @@
     <!-- overlayScrollbars -->
     <script src="{{ asset('assets') }}/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('assets') }}/dist/js/adminlte.js"></script>>
+    <script src="{{ asset('assets') }}/dist/js/adminlte.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
