@@ -61,4 +61,5 @@ what's in CaffeeApp
 
 
 ![App Screenshot](https://github.com/Albretus2/CaffeeApp/blob/main/public/Screen%20Shot%202024-04-06%20at%2013.40.56.png)
-![App Screenshot](https://github.com/Albretus2/CaffeeApp/blob/main/public/Screen%20Shot%202024-04-06%20at%2013.40.56.png)
+<br>
+![App Screenshot](https://github.com/Albretus2/CaffeeApp/blob/main/public/Screen%20Shot%202024-04-06%20at%2002.53.18.png)
